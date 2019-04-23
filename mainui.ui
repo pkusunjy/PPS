@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mainui</class>
+ <widget class="QMainWindow" name="mainui">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1366</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>PPS</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="1">
+     <widget class="QTextEdit" name="textEdit">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::NoTextInteraction</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QVTKOpenGLWidget" name="display3d" native="true"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1366</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_new">
+    <property name="title">
+     <string>新建</string>
+    </property>
+    <addaction name="action_open"/>
+   </widget>
+   <widget class="QMenu" name="menu_process">
+    <property name="title">
+     <string>工作流程</string>
+    </property>
+    <widget class="QMenu" name="menu_triangle">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="title">
+      <string>空中三角测量</string>
+     </property>
+     <addaction name="action_free"/>
+     <addaction name="action_absolute"/>
+    </widget>
+    <addaction name="action_feature"/>
+    <addaction name="action_calib"/>
+    <addaction name="menu_triangle"/>
+    <addaction name="action_dense"/>
+    <addaction name="action_filter"/>
+    <addaction name="action_ortho"/>
+    <addaction name="action_report"/>
+   </widget>
+   <widget class="QMenu" name="menu_help">
+    <property name="title">
+     <string>帮助</string>
+    </property>
+    <addaction name="action_about"/>
+   </widget>
+   <addaction name="menu_new"/>
+   <addaction name="menu_process"/>
+   <addaction name="menu_help"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="action_open">
+   <property name="text">
+    <string>打开</string>
+   </property>
+  </action>
+  <action name="action_feature">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>特征提取</string>
+   </property>
+  </action>
+  <action name="action_calib">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>畸变校正</string>
+   </property>
+  </action>
+  <action name="action_free">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>自由网平差</string>
+   </property>
+  </action>
+  <action name="action_absolute">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>绝对网平差</string>
+   </property>
+  </action>
+  <action name="action_dense">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>密集匹配</string>
+   </property>
+  </action>
+  <action name="action_filter">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>点云滤波</string>
+   </property>
+  </action>
+  <action name="action_ortho">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>正射校正</string>
+   </property>
+  </action>
+  <action name="action_report">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>生成报告</string>
+   </property>
+  </action>
+  <action name="action_about">
+   <property name="text">
+    <string>关于</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QVTKOpenGLWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">Thirdparty/VTK/include/vtk-8.2/QVTKOpenGLWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>action_open</sender>
+   <signal>triggered()</signal>
+   <receiver>mainui</receiver>
+   <slot>paint()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>682</x>
+     <y>383</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>paint()</slot>
+ </slots>
+</ui>
