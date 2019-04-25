@@ -42,7 +42,7 @@
      <x>0</x>
      <y>0</y>
      <width>1366</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_new">
@@ -50,6 +50,7 @@
      <string>新建</string>
     </property>
     <addaction name="action_open"/>
+    <addaction name="action_quit"/>
    </widget>
    <widget class="QMenu" name="menu_process">
     <property name="title">
@@ -158,6 +159,11 @@
     <string>关于</string>
    </property>
   </action>
+  <action name="action_quit">
+   <property name="text">
+    <string>退出</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -166,6 +172,9 @@
    <extends>QWidget</extends>
    <header location="global">Thirdparty/VTK/include/vtk-8.2/QVTKOpenGLWidget.h</header>
    <container>1</container>
+   <slots>
+    <slot>display()</slot>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>
@@ -175,6 +184,22 @@
    <signal>triggered()</signal>
    <receiver>mainui</receiver>
    <slot>paint()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>682</x>
+     <y>383</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_quit</sender>
+   <signal>triggered()</signal>
+   <receiver>mainui</receiver>
+   <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>

@@ -2,8 +2,8 @@
 #include "ui_mainui.h"
 
 #include "vtkAutoInit.h"
-VTK_MODULE_INIT(vtkRenderingOpenGL2);
-VTK_MODULE_INIT(vtkInteractionStyle);
+VTK_MODULE_INIT(vtkRenderingOpenGL2)
+VTK_MODULE_INIT(vtkInteractionStyle)
 
 #include "QVTKOpenGLWidget.h"
 #include "vtkCylinderSource.h"
@@ -13,11 +13,23 @@ VTK_MODULE_INIT(vtkInteractionStyle);
 #include "vtkRenderWindow.h"
 #include "vtkGenericOpenGLRenderWindow.h"
 
+#include <QMessageBox>
+
 mainui::mainui(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::mainui)
 {
     ui->setupUi(this);
+}
+
+mainui::~mainui()
+{
+    delete ui;
+}
+
+void mainui::paint() {
+    ui->textEdit->append("Nope");
+
     auto cylinderSource = vtkSmartPointer<vtkCylinderSource>::New();
     cylinderSource->SetCenter(0, 0, 0);
     cylinderSource->SetRadius(5.0);
@@ -37,16 +49,5 @@ mainui::mainui(QWidget *parent) :
     win->AddRenderer(renderer);
 
     ui->display3d->SetRenderWindow(win);
-    ui->display3d->update();
-}
-
-mainui::~mainui()
-{
-    delete ui;
-}
-
-void mainui::paint() {
-    ui->textEdit->append("Hello vtk!");
-
 }
 

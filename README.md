@@ -1,3 +1,0 @@
-Polar Photogrammetry Suite
-===
-
